@@ -1,0 +1,22 @@
+{
+    "name": "angrybytes/generator-bundle",
+    "description": "ABC Manager Code Generation Bundle",
+    "license": "Proprietary",
+    "authors": [
+        {
+            "name": "Maurice Fonk",
+            "email": "packagist@naneau.net"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "AngryBytes\\GeneratorBundle\\": "src/AngryBytes/GeneratorBundle"
+        }
+    },
+
+    "require": {
+        "naneau/filegen": "~0"
+    },
+    "minimum-stability": "stable"
+}
