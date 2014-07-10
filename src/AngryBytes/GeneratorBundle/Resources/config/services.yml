@@ -1,0 +1,14 @@
+services:
+
+    # Generate application command
+    project.console.command.tempclear:
+        class: AngryBytes\GeneratorBundle\Command\ApplicationCommand
+        tags:
+            - name: project.console.command
+
+    # FileGen Helper
+    generator.project.console.helper.fileGen:
+        class: Naneau\FileGen\Console\Helper\ParameterHelper
+        tags:
+            - name: project.console.helper
+              alias: filegenParameters
