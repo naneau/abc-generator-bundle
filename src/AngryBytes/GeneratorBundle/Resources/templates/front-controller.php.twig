@@ -1,0 +1,36 @@
+<?php
+/*
+ * index.php
+ *
+ * This is the front controller for the {{ name }} application
+ */
+
+use Abc\AbcBundle\Bootstrap\Application\Http as Bootstrap;
+
+// Always set a timezone
+// You can do this through config (recommended) or in the front controller (here)
+// date_default_timezone_set('Europe/Amsterdam');
+
+// Dir to ABC Manager
+$abcDir = __DIR__ . '/../../../';
+
+// Require the bootstrap file from the ABC Manager directory
+// This file will set up the autoloader and include the Kernel
+require_once $abcDir . '/project/env.php';
+
+// Create a bootstrap object for the frontend
+$bootstrap = new Bootstrap;
+$bootstrap
+    ->setApplicationId('{{ id }}') // Set the application id
+    ->setStage(Bootstrap::STAGING) // Pick a stage
+    //->setStage(Bootstrap::PRODUCTION)
+    ->getDebugContainer()->setInDebugMode(true); // Enable debug mode during development
+
+// Initialize the kernel
+$kernel = new Kernel($bootstrap);
+
+// Fetch the dispatcher for this application
+$dispatcher = $kernel->getContainer()->get('{{ id }}.dispatcher');
+
+// Bootstrap the dispatcher
+$dispatcher->bootstrap();

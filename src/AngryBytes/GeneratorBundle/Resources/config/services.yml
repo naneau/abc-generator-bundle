@@ -1,8 +1,19 @@
 services:
 
+    generator.structure.application:
+        class: AngryBytes\GeneratorBundle\Structure\Application
+        arguments:
+            - @=service('directoryLayout').getRoot()
+        calls:
+            - [setTwig, [@project.twig.environment]]
+
     # Generate application command
-    project.console.command.tempclear:
+    generator.project.console.command.application:
         class: AngryBytes\GeneratorBundle\Command\ApplicationCommand
+        calls:
+            - [setStructure, [@generator.structure.application]]
+            - [setDirectoryLayout, [@directoryLayout]]
+            - [setApplications, [@applications]]
         tags:
             - name: project.console.command
 

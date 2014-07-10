@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<abcconfig xmlns:zf="http://framework.zend.com/xml/zend-config-xml/1.0/">
+    <production>
+
+        <!-- Your database information -->
+        <database>
+            <host>localhost</host>
+            <name>abc-manager-database</name>
+            <user>username</user>
+            <password>password</password>
+        </database>
+
+    </production>
+
+    <staging extends="production"></staging>
+    <testing extends="staging" />
+</abcconfig>
