@@ -1,9 +1,8 @@
 services:
 
+    # Factory for structures definining an application
     generator.structure.application:
         class: AngryBytes\GeneratorBundle\Structure\Application
-        arguments:
-            - @=service('directoryLayout').getRoot()
         calls:
             - [setTwig, [@project.twig.environment]]
 
@@ -12,7 +11,7 @@ services:
         class: AngryBytes\GeneratorBundle\Command\ApplicationCommand
         calls:
             - [setStructure, [@generator.structure.application]]
-            - [setDirectoryLayout, [@directoryLayout]]
+            - [setDirectoryLayout, [@project_layout]]
             - [setApplications, [@applications]]
         tags:
             - name: project.console.command
@@ -21,5 +20,5 @@ services:
     generator.project.console.helper.fileGen:
         class: Naneau\FileGen\Console\Helper\ParameterHelper
         tags:
-            - name: project.console.helper
+            - name: project.console.application.helper
               alias: filegenParameters
