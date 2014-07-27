@@ -89,6 +89,13 @@ class Application
             ->file(
                 $name . '/public/index.php',
                 $this->createTwigContents('front-controller.php.twig')
+            )
+
+            // The console
+            ->file(
+                $name . '/console',
+                $this->createTwigContents('console.twig'),
+                0770
             );
 
         // Parameters
