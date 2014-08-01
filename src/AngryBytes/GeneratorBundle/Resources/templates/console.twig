@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+// This is the {{ name }} console
+
+// Require environment/kernel and autoloader through env.php
+require_once __DIR__ . '/../project/env.php';
+
+// Create bootstrap
+$bootstrap = new Abc\AbcBundle\Bootstrap\Application\Console;
+$bootstrap->setApplicationId('{{ id }}');
+
+// Always use debug mode in console
+$bootstrap->getDebugContainer()->setInDebugMode(true);
+
+// Instantiate the kernel
+$kernel = new Kernel($bootstrap);
+
+// Fetch the dispatcher
+$dispatcher = $kernel->getContainer()->get('{{ id }}.dispatcher.console');
+
+// Bootstrap the dispatcher
+$dispatcher->bootstrap();

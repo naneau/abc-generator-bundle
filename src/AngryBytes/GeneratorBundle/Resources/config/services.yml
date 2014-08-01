@@ -1,5 +1,6 @@
 services:
 
+    # Factory for structures definining an application
     generator.structure.application:
         class: AngryBytes\GeneratorBundle\Structure\Application
         arguments:
